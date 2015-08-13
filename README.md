@@ -2,9 +2,8 @@ AngularJs com AmCharts
 ====
 Introdução
 ---
-Recentemente precisei utilizar a biblioteca do AmCharts para criar alguns gráficos em meu sistema que está utilizando AngularJs.
-Procurei, mas não achei nem uma directive completa que resolveria o meu problema, então decidi fazer a minha e também compartilhar isso aqui no github.
-Espero que lhe ajude assim como me ajudou!
+Módulo do AmChart para utilizar com o AngularJS.
+Muito Simples!!!!
 
 Fácil utilização
 ---
@@ -14,9 +13,13 @@ Coloque o módulo em suas dependências no bower.js
 
 ~~~javascript
 {
-  ...
+  "angular-amchart":"~1.0.1"
 }
 ~~~
+
+Depois utilize o arquivo
+
+/bower_components/angular-amchart/src/amchart.js
 
 
 Olhe o exemplo abaixo:
