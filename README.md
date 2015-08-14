@@ -15,7 +15,7 @@ Coloque o módulo em suas dependências no bower.js
 
 ~~~javascript
 {
-  "angular-amchart":"~1.0.3"
+  "angular-amchart":"~1.0.5"
 }
 ~~~
 

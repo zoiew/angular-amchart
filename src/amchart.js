@@ -23,35 +23,32 @@ angular.module('AngularAmChart', [])
                     $el.attr('id', id);
                     var chart;
 
-                    if (scope.options) {
-                        //Função que renderiza o gráfico na tela
-                        var renderChart = function (amChartOptions) {
-                            var option = amChartOptions || scope.options;
-                            
-                            
+                    //Função que renderiza o gráfico na tela
+                    var renderChart = function (amChartOptions) {
+                        var option = amChartOptions || scope.options;
+                        if (scope.options) {
                             //verificando qual tipo é o gráfico
-                            switch(option.type){
+                            switch (option.type) {
                                 case "serial":
                                     chart = new AmCharts.AmSerialChart();
-                                break;
+                                    break;
                                 case "pie":
                                     chart = new AmCharts.AmPieChart();
-                                break;
+                                    break;
                                 case "funnel":
                                     chart = new AmCharts.AmFunnelChart();
-                                break;
+                                    break;
                                 case "gauge":
                                     chart = new AmCharts.AmAngularGauge();
-                                break;
+                                    break;
                                 case "radar":
                                     chart = new AmCharts.AmRadarChart();
-                                break;
+                                    break;
                                 case "xy":
                                     chart = new AmCharts.AmXYChart();
-                                break;
+                                    break;
                             }
-                            
-                            
+
                             chart.dataProvider = option.data;
 
                             //Colocando no objeto chart todos as propriedades que vierem no option
@@ -65,15 +62,15 @@ angular.module('AngularAmChart', [])
                             }
                             //Método do objeto Amchart para rendererizar o gráfico
                             chart.write(id);
-                        };
+                        }
+                    };
 
-                        renderChart();
-                        scope.$watch('options', function (newValue, oldValue) {
-                            if (id === $el[0].id || !id) {
-                                renderChart(newValue);
-                            }
-                        }, true);
-                    }
+                    renderChart(scope.options);
+                    scope.$watch('options', function (newValue, oldValue) {
+                        if (id === $el[0].id || !id) {
+                            renderChart(newValue);
+                        }
+                    }, true);
 
                 }
             };
