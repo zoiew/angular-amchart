@@ -9,11 +9,13 @@ Fácil utilização
 ---
 A forma de você utilizar esse módulo é muito simples!
 
+O nome do módulo é [AngularAmChart]
+
 Coloque o módulo em suas dependências no bower.js
 
 ~~~javascript
 {
-  "angular-amchart":"~1.0.1"
+  "angular-amchart":"~1.0.3"
 }
 ~~~
 
