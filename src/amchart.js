@@ -27,8 +27,7 @@ angular.module('AngularAmChart', [])
                         //Função que renderiza o gráfico na tela
                         var renderChart = function (amChartOptions) {
                             var option = amChartOptions || scope.options;
-                            //Instanciando o chart de serial
-                            chart = new AmCharts.AmSerialChart();
+                            
                             
                             //verificando qual tipo é o gráfico
                             switch(option.type){
