@@ -27,25 +27,32 @@ angular.module('AngularAmChart', [])
                     var renderChart = function (amChartOptions) {
                         var option = amChartOptions || scope.options;
                         if (scope.options) {
+
                             //verificando qual tipo é o gráfico
                             switch (option.type) {
                                 case "serial":
                                     chart = new AmCharts.AmSerialChart();
+                                    chart = option.theme ? new AmCharts.AmSerialChart(AmCharts.themes[option.theme]) : new AmCharts.AmSerialChart();
                                     break;
                                 case "pie":
                                     chart = new AmCharts.AmPieChart();
+                                    chart = option.theme ? new AmCharts.AmPieChart(AmCharts.themes[option.theme]) : new AmCharts.AmPieChart();
                                     break;
                                 case "funnel":
                                     chart = new AmCharts.AmFunnelChart();
+                                    chart = option.theme ? new AmCharts.AmFunnelChart(AmCharts.themes[option.theme]) : new AmCharts.AmFunnelChart();
                                     break;
                                 case "gauge":
                                     chart = new AmCharts.AmAngularGauge();
+                                    chart = option.theme ? new AmCharts.AmAngularGauge(AmCharts.themes[option.theme]) : new AmCharts.AmAngularGauge();
                                     break;
                                 case "radar":
                                     chart = new AmCharts.AmRadarChart();
+                                    chart = option.theme ? new AmCharts.AmRadarChart(AmCharts.themes[option.theme]) : new AmCharts.AmRadarChart();
                                     break;
                                 case "xy":
                                     chart = new AmCharts.AmXYChart();
+                                    chart = option.theme ? new AmCharts.AmXYChart(AmCharts.themes[option.theme]) : new AmCharts.AmXYChart();
                                     break;
                             }
 
@@ -54,10 +61,12 @@ angular.module('AngularAmChart', [])
                             //Colocando no objeto chart todos as propriedades que vierem no option
                             var chartKeys = Object.keys(option);
                             for (var i = 0; i < chartKeys.length; i++) {
-                                if (typeof option[chartKeys[i]] !== 'object' && typeof option[chartKeys[i]] !== 'function') {
-                                    chart[chartKeys[i]] = option[chartKeys[i]];
-                                } else {
-                                    chart[chartKeys[i]] = angular.copy(option[chartKeys[i]]);
+                                if (chartKeys[i] !== "theme") {
+                                    if (typeof option[chartKeys[i]] !== 'object' && typeof option[chartKeys[i]] !== 'function') {
+                                        chart[chartKeys[i]] = option[chartKeys[i]];
+                                    } else {
+                                        chart[chartKeys[i]] = angular.copy(option[chartKeys[i]]);
+                                    }
                                 }
                             }
                             //Método do objeto Amchart para rendererizar o gráfico
