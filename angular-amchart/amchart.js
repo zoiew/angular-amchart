@@ -53,7 +53,7 @@ angular.module('AngularAmChart', [])
                             }
                             
                             
-                            chart.dataProvider = option.data;
+                            chart.dataProvider = option.data || option.dataProvider;
 
                             //Colocando no objeto chart todos as propriedades que vierem no option
                             var chartKeys = Object.keys(option);
