@@ -6,7 +6,7 @@ angular.module('AngularAmChart', [])
                 scope: {
                     options: '=ngModel'
                 },
-                template: "<div class='amchart' style='width: 100%; height: 400px;'></div>",
+                template: "<div class='amchart' style='width: 100%; height: 100%;'></div>",
                 link: function (scope, $el) {
                     //Gerando um uid para colocar no elemento
                     var guid = function guid() {
