@@ -4,10 +4,11 @@ angular.module('AngularAmChart', [])
             return {
                 replace: true,
                 scope: {
-                    options: '=ngModel'
+                    options: '=ngModel',
+                    returnChart : '='
                 },
                 template: "<div class='amchart' style='width: 100%; height: 100%;'></div>",
-                link: function (scope, $el) {
+                link: function (scope, $el, controller) {
                     //Gerando um uid para colocar no elemento
                     var guid = function guid() {
                         function s4() {
@@ -21,51 +22,55 @@ angular.module('AngularAmChart', [])
 
                     var id = guid();
                     $el.attr('id', id);
-                    var chart;
 
                     if (scope.options) {
                         //Função que renderiza o gráfico na tela
                         var renderChart = function (amChartOptions) {
                             var option = amChartOptions || scope.options;
                             //Instanciando o chart de serial
-                            chart = new AmCharts.AmSerialChart();
-                            
+                            scope.chart = new AmCharts.AmSerialChart();
+
                             //verificando qual tipo é o gráfico
                             switch(option.type){
                                 case "serial":
-                                    chart = new AmCharts.AmSerialChart();
+                                    scope.chart = new AmCharts.AmSerialChart();
                                 break;
                                 case "pie":
-                                    chart = new AmCharts.AmPieChart();
+                                    scope.chart = new AmCharts.AmPieChart();
                                 break;
                                 case "funnel":
-                                    chart = new AmCharts.AmFunnelChart();
+                                    scope.chart = new AmCharts.AmFunnelChart();
                                 break;
                                 case "gauge":
-                                    chart = new AmCharts.AmAngularGauge();
+                                    scope.chart = new AmCharts.AmAngularGauge();
                                 break;
                                 case "radar":
-                                    chart = new AmCharts.AmRadarChart();
+                                    scope.chart = new AmCharts.AmRadarChart();
                                 break;
                                 case "xy":
-                                    chart = new AmCharts.AmXYChart();
+                                    scope.chart = new AmCharts.AmXYChart();
                                 break;
                             }
-                            
-                            
-                            chart.dataProvider = option.data || option.dataProvider;
+
+
+                            scope.chart.dataProvider = option.data || option.dataProvider;
 
                             //Colocando no objeto chart todos as propriedades que vierem no option
                             var chartKeys = Object.keys(option);
                             for (var i = 0; i < chartKeys.length; i++) {
                                 if (typeof option[chartKeys[i]] !== 'object' && typeof option[chartKeys[i]] !== 'function') {
-                                    chart[chartKeys[i]] = option[chartKeys[i]];
+                                    scope.chart[chartKeys[i]] = option[chartKeys[i]];
                                 } else {
-                                    chart[chartKeys[i]] = angular.copy(option[chartKeys[i]]);
+                                    scope.chart[chartKeys[i]] = angular.copy(option[chartKeys[i]]);
                                 }
                             }
                             //Método do objeto Amchart para rendererizar o gráfico
-                            chart.write(id);
+                            scope.chart.write(id);
+
+                            //Caso você queira utilizar o objeto de chart para criar algum evento
+                             if(scope.returnChart){
+                                 scope.$parent.setChart(scope.chart);
+                             }
                         };
 
                         renderChart();
