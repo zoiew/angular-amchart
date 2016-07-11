@@ -3,7 +3,6 @@ AngularJs com AmCharts
 Introdução
 ---
 Módulo do AmChart para utilizar com o AngularJS.
-Muito Simples!!!!
 
 Fácil utilização
 ---
@@ -13,15 +12,18 @@ O nome do módulo é [AngularAmChart]
 
 Coloque o módulo em suas dependências no bower.js
 
+~~~bash
+$ bower install angular-amchart-directive
+~~~
+
+
 ~~~javascript
 {
-  "angular-amchart":"~1.1.0"
+  "angular-amchart-directive":"~1.4.0"
 }
 ~~~
 
-Depois utilize o arquivo
-
-/bower_components/angular-amchart/src/amchart.js
+Depois utilize o arquivo `/bower_components/angular-amchart-directive/angular-amchart-directive.js`
 
 
 Olhe o exemplo abaixo:
