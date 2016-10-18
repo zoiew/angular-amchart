@@ -1,7 +1,7 @@
 {
   "name": "angular-amchart-directive",
   "main": "angular-amchart-directive.js",
-  "version" : "1.4.0",
+  "version" : "1.4.2",
   "homepage": "https://github.com/connecta-solutions/angular-amchart",
   "authors": [
     "Cleto Gadelha <cletogadelha@gmail.com>",
