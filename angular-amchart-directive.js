@@ -25,8 +25,6 @@ angular.module('AngularAmChart', []).directive('amchart', function () {
             //Função que renderiza o gráfico na tela
             var _renderChart = function (amChartOptions) {
                 var option = amChartOptions || scope.options;
-                //Instanciando o chart de serial
-                scope.chart = new AmCharts.AmSerialChart();
 
                 if (option) {
 
@@ -55,7 +53,6 @@ angular.module('AngularAmChart', []).directive('amchart', function () {
                             break;
                     }
 
-
                     scope.chart.dataProvider = option.data || option.dataProvider;
 
                     //Colocando no objeto chart todos as propriedades que vierem no option
@@ -75,6 +72,7 @@ angular.module('AngularAmChart', []).directive('amchart', function () {
                         scope.$parent.setChart(scope.chart);
                     }
                 } else {
+                    //Instanciando o chart de serial
                     scope.chart = new AmCharts.AmSerialChart();
                 }
             };
