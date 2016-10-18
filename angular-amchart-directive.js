@@ -50,6 +50,9 @@ angular.module('AngularAmChart', []).directive('amchart', function () {
                         case "xy":
                             scope.chart = new AmCharts.AmXYChart();
                             break;
+                        default:
+                            scope.chart = new AmCharts.AmSerialChart();
+                            break;
                     }
 
 
@@ -71,6 +74,8 @@ angular.module('AngularAmChart', []).directive('amchart', function () {
                     if (scope.returnChart) {
                         scope.$parent.setChart(scope.chart);
                     }
+                } else {
+                    scope.chart = new AmCharts.AmSerialChart();
                 }
             };
 
@@ -79,7 +84,7 @@ angular.module('AngularAmChart', []).directive('amchart', function () {
                     _renderChart(newValue);
                 }
             }, true);
-            
+
             _renderChart(scope.options);
         }
     };
